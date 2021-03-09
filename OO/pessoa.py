@@ -1,18 +1,20 @@
 class Pessoa: #criação de objetos
-    def __init__(self, nome = None, idade = 25): #criando atributos de dados
+    def __init__(self, *filhos, nome = None, idade = 25): #criando atributos de dados
         self.idade = idade
         self.nome = nome #campo existe mas sem valor atribuido
+        self.filhos = list(filhos)
 
     def cumprimentar(self): #utilizando metodos (esta sempre atrelado a um objeto)
         return f'Olá, {id(self)}.'
 
 
 if __name__ == '__main__':
-    p = Pessoa('Silva')
-    print(Pessoa.cumprimentar(p))
-    print(id(p))
-    print(p.cumprimentar())
-    print(p.nome)
-    p.nome = 'Renan' #alterar o valor do atributo
-    print(p.nome)
-    print(p.idade)
+    renan = Pessoa(nome= 'Renan')
+    silva = Pessoa(renan, nome ='Silva')
+    print(Pessoa.cumprimentar(silva))
+    print(id(silva))
+    print(silva.cumprimentar())
+    print(silva.nome)
+    print(silva.idade)
+    for filho in silva.filhos:
+        print(filho.nome)
