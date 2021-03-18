@@ -9,6 +9,14 @@ class Pessoa: #criação de objetos
     def cumprimentar(self): #utilizando metodos (esta sempre atrelado a um objeto)
         return f'Olá, {id(self)}.'
 
+    @staticmethod #decorator. metodo estatico funciona como uma função atrelada a classe pessoa. independe do objeto.
+    def metodo_estatico():
+        return 42
+
+    @classmethod #outro decorator. #para acessar dados da própria classe
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos {cls.olhos}'
+
 
 if __name__ == '__main__':
     renan = Pessoa(nome= 'Renan')
@@ -32,3 +40,5 @@ if __name__ == '__main__':
     print(silva.olhos)
     print(renan.olhos) #é possivel acessar o atributo de classe não só pela classe mas tbm pelos objetos
     print(id(Pessoa.olhos), id(renan.olhos), id(silva.olhos))
+    print(Pessoa.metodo_estatico(), silva.metodo_estatico()) #se o atributo não for encontrado no objeto, o python procura na classe
+    print(Pessoa.nome_e_atributos_de_classe(), silva.nome_e_atributos_de_classe())
