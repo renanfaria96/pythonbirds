@@ -7,7 +7,7 @@ class Pessoa: #criação de objetos
         self.filhos = list(filhos)
 
     def cumprimentar(self): #utilizando metodos (esta sempre atrelado a um objeto)
-        return f'Olá, {id(self)}.'
+        return f'Olá, meu nome é {self.nome}.'
 
     @staticmethod #decorator. metodo estatico funciona como uma função atrelada a classe pessoa. independe do objeto.
     def metodo_estatico():
@@ -19,8 +19,9 @@ class Pessoa: #criação de objetos
 
 
 class Homem(Pessoa):
-    pass
-
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar() #super acessa os elementos da classe py de homem
+        return f'{cumprimentar_da_classe} Aperto de mão'
 
 class Mutante(Pessoa):
     olhos = 3 #sobrescrita de atributos de dados
@@ -28,7 +29,7 @@ class Mutante(Pessoa):
 
 if __name__ == '__main__':
     renan = Mutante(nome= 'Renan')
-    silva = Pessoa(renan, nome ='Silva')
+    silva = Homem(renan, nome ='Silva')
     print(Pessoa.cumprimentar(silva))
     print(id(silva))
     print(silva.cumprimentar())
@@ -56,3 +57,5 @@ if __name__ == '__main__':
     print(isinstance(renan, Pessoa))
     print(isinstance(renan, Homem))
     print(renan.olhos)
+    print(renan.cumprimentar())
+    print(silva.cumprimentar())
