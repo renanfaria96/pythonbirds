@@ -18,8 +18,12 @@ class Pessoa: #criação de objetos
         return f'{cls} - olhos {cls.olhos}'
 
 
+class Homem(Pessoa):
+    pass
+
+
 if __name__ == '__main__':
-    renan = Pessoa(nome= 'Renan')
+    renan = Homem(nome= 'Renan')
     silva = Pessoa(renan, nome ='Silva')
     print(Pessoa.cumprimentar(silva))
     print(id(silva))
@@ -42,3 +46,8 @@ if __name__ == '__main__':
     print(id(Pessoa.olhos), id(renan.olhos), id(silva.olhos))
     print(Pessoa.metodo_estatico(), silva.metodo_estatico()) #se o atributo não for encontrado no objeto, o python procura na classe
     print(Pessoa.nome_e_atributos_de_classe(), silva.nome_e_atributos_de_classe())
+    pessoa = Pessoa('Anônimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(renan, Pessoa))
+    print(isinstance(renan, Homem))
