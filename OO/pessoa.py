@@ -22,8 +22,12 @@ class Homem(Pessoa):
     pass
 
 
+class Mutante(Pessoa):
+    olhos = 3 #sobrescrita de atributos de dados
+
+
 if __name__ == '__main__':
-    renan = Homem(nome= 'Renan')
+    renan = Mutante(nome= 'Renan')
     silva = Pessoa(renan, nome ='Silva')
     print(Pessoa.cumprimentar(silva))
     print(id(silva))
@@ -38,7 +42,7 @@ if __name__ == '__main__':
     del silva.olhos #apaga o atributo do objeto e não o da classe, então ele vai de 1 para 3
     print(silva.__dict__)
     print(renan.__dict__)
-    Pessoa.olhos = 3 #isso fará q a classe pessoa passe de 2 para 3. mas o silva continua com 1
+    #Pessoa.olhos = 3 #isso fará q a classe pessoa passe de 2 para 3. mas o silva continua com 1
     #print(Pessoa.nome) #não faz sentido fazer isso pq não especificou qual pessoa
     print(Pessoa.olhos) #isso faz sentido, pq toda pessoa tem 2 olhos. atributo de classe pode ser acessado pela classe
     print(silva.olhos)
@@ -51,3 +55,4 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(renan, Pessoa))
     print(isinstance(renan, Homem))
+    print(renan.olhos)
